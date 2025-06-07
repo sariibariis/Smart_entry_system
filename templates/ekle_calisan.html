@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Yeni Çalışan Ekle{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">➕ Yeni Çalışan Ekle</h1>
+
+<form method="POST" class="mx-auto" style="max-width: 500px;">
+  <div class="mb-3">
+    <label for="isim" class="form-label">İsim</label>
+    <input type="text" class="form-control" id="isim" name="isim" required placeholder="Çalışan adı girin">
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Kaydet</button>
+</form>
+
+<div class="text-center mt-4">
+  <a href="/calisanlar" class="btn btn-secondary">⬅️ Geri</a>
+</div>
+{% endblock %}

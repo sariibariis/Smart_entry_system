@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Çalışma Süreleri{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">🕒 Çalışan Çalışma Süreleri</h1>
+
+<form method="POST" class="d-flex justify-content-center align-items-center gap-3 mb-4 flex-wrap">
+  <label for="tarih" class="form-label mb-0">Tarih Seç:</label>
+  <input type="date" id="tarih" name="tarih" class="form-control" style="max-width: 200px;" value="{{ tarih }}">
+  <button type="submit" class="btn btn-primary">Filtrele</button>
+  <a href="/calisma_sureleri" class="btn btn-secondary">Tüm Günleri Göster</a>
+</form>
+
+{% if calisma_sureleri %}
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Çalışan</th>
+          <th>Toplam Çalışma Süresi</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for name, sure in calisma_sureleri.items() %}
+        <tr>
+          <td>{{ name }}</td>
+          <td>{{ sure }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p class="text-muted text-center">📭 Gösterilecek kayıt bulunamadı.</p>
+{% endif %}
+
+<div class="text-center mt-4">
+  <a href="/" class="btn btn-outline-dark">⬅️ Ana Sayfaya Dön</a>
+</div>
+{% endblock %}

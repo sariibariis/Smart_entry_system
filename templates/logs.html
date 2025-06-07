@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Giriş/Çıkış Logları{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">📋 Giriş / Çıkış Logları</h1>
+
+<div class="d-flex justify-content-center gap-3 mb-4 flex-wrap">
+  <a href="/export_logs" class="btn btn-success">📁 CSV Olarak İndir</a>
+  <a href="/clear_logs" class="btn btn-danger">🗑️ Tüm Logları Temizle</a>
+</div>
+
+{% if logs %}
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>İsim</th>
+          <th>Zaman</th>
+          <th>İşlem</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for log in logs %}
+        <tr>
+          <td>{{ log[0] }}</td>
+          <td>{{ log[1] }}</td>
+          <td>{{ log[2] }}</td>
+          <td>{{ log[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p class="text-muted text-center">📭 Henüz giriş/çıkış kaydı bulunmamaktadır.</p>
+{% endif %}
+{% endblock %}

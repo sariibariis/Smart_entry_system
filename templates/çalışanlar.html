@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Çalışanlar</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+  <h1>👥 Kayıtlı Çalışanlar</h1>
+
+  <ul>
+    {% for name in employees %}
+      <li>{{ name }} <a href="/sil/{{ name }}">❌ Sil</a></li>
+    {% endfor %}
+  </ul>
+
+  <br>
+  <a href="/">⬅️ Ana Sayfa</a>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul>
+      {% for category, message in messages %}
+        <li><strong>{{ category }}:</strong> {{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</body>
+</html>
+

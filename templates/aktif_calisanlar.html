@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Aktif Çalışanlar{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">🟢 Şu Anda İçeride Olan Çalışanlar</h1>
+
+{% if aktifler %}
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>İsim</th>
+          <th>Giriş Zamanı</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for isim, zaman in aktifler %}
+        <tr>
+          <td>{{ isim }}</td>
+          <td>{{ zaman }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p class="text-muted text-center">Şu anda içeride hiç çalışan yok.</p>
+{% endif %}
+
+<div class="text-center mt-4">
+  <a href="/logs" class="btn btn-secondary">⬅️ Loglara Geri Dön</a>
+</div>
+{% endblock %}
